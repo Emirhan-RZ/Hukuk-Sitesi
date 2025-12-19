@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Çalışmalarımız | Güçlü Hukuk Bürosu</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      a {
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0 50px;
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        background-color: transparent;
+      }
+
+      .logo {
+        position: absolute;
+        top: -20px;
+        left: 50px;
+        z-index: 1001;
+      }
+      .logo img {
+        height: 160px;
+        width: auto;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+      }
+
+      .logo-renkli {
+        display: none !important;
+      }
+      .logo-beyaz {
+        display: block !important;
+      }
+
+      header.aktif {
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      header.aktif .logo-beyaz {
+        display: none !important;
+      }
+      header.aktif .logo-renkli {
+        display: block !important;
+      }
+
+      nav {
+        margin-left: auto;
+      }
+      nav ul {
+        display: flex;
+        gap: 30px;
+      }
+      nav ul li a {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 15px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      nav ul li a:hover {
+        color: #d4af37;
+      }
+
+      header.aktif nav ul li a {
+        color: #1a252f;
+      }
+      header.aktif nav ul li a:hover {
+        color: #d4af37;
+      }
+
+      .page-header {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background-image: url("img/calisma.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .page-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 37, 47, 0.75);
+      }
+      .header-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+      }
+      .header-content h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+        font-family: "Times New Roman", serif;
+      }
+      .breadcrumb {
+        font-size: 16px;
+        color: #d4af37;
+        font-weight: 600;
+      }
+      .breadcrumb a {
+        color: #fff;
+        margin-right: 10px;
+      }
+      .breadcrumb i {
+        font-size: 12px;
+        margin-right: 10px;
+        opacity: 0.7;
+      }
+
+      .calisma-container {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+      }
+
+      .service-card {
+        display: flex;
+        gap: 40px;
+        padding: 50px;
+        margin-bottom: 40px;
+        border-radius: 4px;
+        transition: transform 0.3s ease;
+      }
+
+      .highlight-card {
+        background-color: #e6dccf;
+        border: none;
+      }
+      .highlight-card h3 {
+        color: #6d6050;
+      }
+      .highlight-card p {
+        color: #7f7263;
+      }
+      .highlight-card .icon-box {
+        color: #4a4036;
+      }
+
+      .standard-card {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+      }
+      .standard-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-color: #d4af37;
+      }
+      .standard-card h3 {
+        color: #1a252f;
+      }
+      .standard-card .icon-box {
+        color: #1a252f;
+      }
+
+      .icon-box {
+        flex: 0 0 60px;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+      }
+
+      .text-box {
+        flex: 1;
+      }
+      .text-box h3 {
+        font-size: 28px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: "Times New Roman", serif;
+      }
+      .text-box p {
+        font-size: 16px;
+        text-align: justify;
+      }
+
+      .footer {
+        background-color: #0d131a;
+        color: #bdc3c7;
+        padding: 70px 0 20px;
+        border-top: 4px solid #d4af37;
+        font-size: 14px;
+      }
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+      .footer-col {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 30px;
+      }
+      .footer-col:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-col h3 {
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .footer-col h4 {
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+        height: 2px;
+        background-color: #d4af37;
+      }
+      .footer-col:nth-child(2) h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-col ul li a {
+        color: #bdc3c7;
+        transition: color 0.3s;
+      }
+      .footer-col ul li a:hover {
+        color: #d4af37;
+        padding-left: 5px;
+      }
+      .footer-col:nth-child(2) ul li a:hover {
+        padding-left: 0;
+        color: #fff;
+      }
+      .footer-bottom-sade {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #777;
+      }
+
+      @media (max-width: 900px) {
+        .footer-col:nth-child(2) {
+          align-items: flex-start;
+        }
+        .footer-col:nth-child(2) h4::after {
+          left: 0;
+          transform: none;
+        }
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 28px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1002;
+
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      header.aktif .menu-toggle {
+        color: #1a252f;
+      }
+
+      @media (max-width: 900px) {
+        header {
+          padding: 0 20px;
+          height: 80px;
+        }
+        .logo {
+          left: 20px;
+          top: 0;
+        }
+        .logo img {
+          height: 80px;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        nav {
+          position: absolute;
+          top: 80px;
+          right: -100%;
+
+          width: 280px;
+          height: auto;
+
+          background-color: #ffffff;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          border-radius: 0 0 0 15px;
+
+          transition: right 0.4s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 30px;
+        }
+
+        nav.acik {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+        }
+
+        nav ul li a {
+          font-size: 18px;
+          color: #1a252f !important;
+          display: block;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 10px;
+          width: 100%;
+        }
+        nav ul li a:hover {
+          color: #d4af37 !important;
+          border-color: #d4af37;
+        }
+
+        .calisma-container,
+        .footer-container {
+          padding: 20px;
+        }
+        .service-card {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+          padding: 30px;
+        }
+        .icon-box {
+          justify-content: center;
+        }
+        .text-box p {
+          text-align: center;
+        }
+        .header-content h1 {
+          font-size: 32px;
+        }
+        .page-header {
+          height: 300px;
+        }
+      }
+
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+        z-index: 999;
+      }
+      .nav-overlay.acik {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="logo">
+        <img src="img/logo2.png" alt="Beyaz Logo" class="logo-beyaz" />
+        <img src="img/logo.png" alt="Renkli Logo" class="logo-renkli" />
+      </div>
+
+      <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li>
+            <a href="calismalarimiz.html" style="color: #d4af37"
+              >Çalışmalarımız</a
+            >
+          </li>
+          <li><a href="avukatlar.html">Avukatlarımız</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="nav-overlay"></div>
+
+    <section class="page-header">
+      <div class="header-content">
+        <span
+          style="
+            font-size: 14px;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 10px;
+            color: #d4af37;
+          "
+          >LA FAMILE</span
+        >
+        <h1>Çalışma Alanlarımız</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <i class="fa-solid fa-chevron-right"></i> Çalışmalarımız
+        </div>
+      </div>
+    </section>
+
+    <section class="calisma-container">
+      <div class="service-card highlight-card">
+        <div class="icon-box"><i class="fa-solid fa-user-slash"></i></div>
+        <div class="text-box">
+          <h3>Boşanma ve Aile Hukuku</h3>
+          <p>
+            Güçlü Hukuk Bürosu olarak; evlilik birliğinin temelinden sarsılması,
+            anlaşmalı ve çekişmeli boşanma davaları, velayet, nafaka ve
+            maddi-manevi tazminat taleplerinde müvekkillerimizin
+            hassasiyetlerini gözeterek hukuki destek sağlamaktayız.
+          </p>
+          <p>
+            Özellikle mal rejiminin tasfiyesi, ailenin korunması ve kadına karşı
+            şiddetin önlenmesine dair tedbir kararlarının alınması süreçlerinde,
+            "La Famile" anlayışıyla ailenin ve bireyin haklarını en üst düzeyde
+            korumayı hedefliyoruz.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-card standard-card">
+        <div class="icon-box"><i class="fa-solid fa-medal"></i></div>
+        <div class="text-box">
+          <h3>Spor Hukuku</h3>
+          <p>
+            Profesyonel sporcu sözleşmeleri, kulüp ve oyuncu arasındaki alacak
+            uyuşmazlıkları, menajerlik sözleşmeleri ve disiplin cezalarına
+            itiraz süreçlerinde TFF, FIFA ve CAS nezdinde temsil hizmeti
+            sunuyoruz.
+          </p>
+          <p>
+            Sporun dinamik yapısına hakim uzman kadromuzla, lisans problemleri
+            ve doping cezaları gibi teknik konularda da hukuki danışmanlık
+            vermekteyiz.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-card standard-card">
+        <div class="icon-box"><i class="fa-solid fa-copyright"></i></div>
+        <div class="text-box">
+          <h3>Fikri Mülkiyet ve Telif Hukuku</h3>
+          <p>
+            Sanat eserleri, yazılımlar, markalar ve patentlerin korunması
+            kapsamında; telif hakkı ihlallerinin önlenmesi, tecavüzün ref'i ve
+            tazminat davalarının yürütülmesi konularında çalışmaktayız.
+          </p>
+          <p>
+            Marka tescil süreçleri ve fikri sınai haklar hukuk mahkemelerindeki
+            uyuşmazlıklarda, eser sahiplerinin ve yaratıcıların haklarını
+            güvence altına alıyoruz.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-card standard-card">
+        <div class="icon-box"><i class="fa-solid fa-users-gear"></i></div>
+        <div class="text-box">
+          <h3>İş ve Sosyal Güvenlik Hukuku</h3>
+          <p>
+            İşe iade davaları, kıdem ve ihbar tazminatı hesaplamaları, mobbing,
+            iş kazalarından doğan tazminat talepleri ve iş sözleşmelerinin
+            düzenlenmesi konularında hem işçi hem de işveren vekilliği
+            yapmaktayız.
+          </p>
+          <p>
+            İşçi-işveren arasındaki arabuluculuk süreçlerinde aktif rol alarak,
+            uyuşmazlıkların en hızlı ve adil şekilde çözülmesini sağlıyoruz.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-card standard-card">
+        <div class="icon-box"><i class="fa-solid fa-gavel"></i></div>
+        <div class="text-box">
+          <h3>Ceza Hukuku</h3>
+          <p>
+            Soruşturma evresinden kovuşturma ve infaz aşamasına kadar;
+            müvekkillerimizin adil yargılanma hakkını gözeterek, karakol ve
+            savcılık ifadelerinde hukuki yardım sunuyoruz.
+          </p>
+          <p>
+            Ağır ceza ve asliye ceza mahkemelerinin görev alanına giren tüm suç
+            tiplerinde, etkin bir savunma stratejisi izlemekteyiz.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-card standard-card">
+        <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+        <div class="text-box">
+          <h3>Bilişim ve KVKK Hukuku</h3>
+          <p>
+            İnternet yoluyla işlenen suçlar, erişimin engellenmesi kararları,
+            e-ticaret hukuku ve Kişisel Verilerin Korunması Kanunu (KVKK) uyum
+            süreçlerinde danışmanlık vermekteyiz.
+          </p>
+          <p>
+            Dijital dünyadaki itibar yönetimi ve siber zorbalıkla mücadele
+            konularında hukuki ve teknik altyapımızla yanınızdayız.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Güçlü <span style="color: #d4af37">Hukuk</span></h3>
+          <p>
+            Hukukun üstünlüğü ilkesiyle, müvekkillerimize şeffaf ve sonuç odaklı
+            çözümler sunuyoruz.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Erişim</h4>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="calismalarimiz.html">Çalışmalarımız</a></li>
+            <li><a href="avukatlar.html">Avukatlarımız</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul style="color: #bdc3c7">
+            <li style="margin-bottom: 10px">Adalet Mah. No: 12, İstanbul</li>
+            <li style="margin-bottom: 10px">+90 (212) 555 00 00</li>
+            <li style="margin-bottom: 10px">info@gucluhukuk.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-sade">
+        <p>&copy; 2025 Güçlü Hukuk Bürosu. Tüm Hakları Saklıdır.</p>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.querySelector("header");
+      const menuBtn = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector("nav");
+      const overlay = document.querySelector(".nav-overlay");
+      const icon = menuBtn.querySelector("i");
+
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("aktif", window.scrollY > 50);
+      });
+
+      function toggleMenu() {
+        navMenu.classList.toggle("acik");
+        overlay.classList.toggle("acik");
+
+        if (navMenu.classList.contains("acik")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+          document.body.style.overflow = "hidden";
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+          document.body.style.overflow = "";
+        }
+      }
+
+      menuBtn.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900 && navMenu.classList.contains("acik")) {
+          toggleMenu();
+        }
+      });
+    </script>
+  </body>
+</html>

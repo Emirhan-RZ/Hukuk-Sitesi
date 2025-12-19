@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>İletişim | Güçlü Hukuk Bürosu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        padding: 0 50px;
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        background-color: transparent;
+      }
+      .logo {
+        position: absolute;
+        top: -20px;
+        left: 50px;
+        z-index: 1001;
+      }
+      .logo img {
+        height: 160px;
+        width: auto;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+      }
+      .logo-renkli {
+        display: none !important;
+      }
+      .logo-beyaz {
+        display: block !important;
+      }
+      header.aktif {
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      header.aktif .logo-beyaz {
+        display: none !important;
+      }
+      header.aktif .logo-renkli {
+        display: block !important;
+      }
+      nav {
+        margin-left: auto;
+      }
+      nav ul {
+        display: flex;
+        gap: 30px;
+      }
+      nav ul li a {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 15px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      nav ul li a:hover {
+        color: #d4af37;
+      }
+      header.aktif nav ul li a {
+        color: #1a252f;
+      }
+      header.aktif nav ul li a:hover {
+        color: #d4af37;
+      }
+
+      .page-header {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background-image: url("https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .page-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 37, 47, 0.8);
+      }
+      .header-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+      }
+      .header-content h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+        font-family: "Times New Roman", serif;
+      }
+      .breadcrumb {
+        font-size: 16px;
+        color: #d4af37;
+        font-weight: 600;
+      }
+      .breadcrumb a {
+        color: #fff;
+        margin-right: 10px;
+      }
+      .breadcrumb i {
+        font-size: 12px;
+        margin-right: 10px;
+        opacity: 0.7;
+      }
+
+      .contact-info-section {
+        padding: 80px 50px;
+        margin-top: -50px;
+        position: relative;
+        z-index: 3;
+      }
+      .info-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .info-card {
+        background: #fff;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        border-bottom: 3px solid transparent;
+      }
+      .info-card:hover {
+        transform: translateY(-10px);
+        border-color: #d4af37;
+      }
+      .info-icon {
+        font-size: 30px;
+        color: #d4af37;
+        margin-bottom: 20px;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .info-card h3 {
+        font-size: 20px;
+        color: #1a252f;
+        margin-bottom: 15px;
+      }
+      .info-card p {
+        color: #666;
+        font-size: 15px;
+      }
+
+      .contact-main {
+        padding: 0 50px 100px;
+        background-color: #f9f9f9;
+      }
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 50px;
+        background: #fff;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .map-wrapper {
+        flex: 1;
+        min-height: 400px;
+        border-radius: 5px;
+        overflow: hidden;
+        border: 1px solid #eee;
+      }
+      .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .form-wrapper {
+        flex: 1;
+      }
+      .form-wrapper h2 {
+        font-size: 32px;
+        color: #1a252f;
+        margin-bottom: 20px;
+        font-family: "Times New Roman", serif;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #d4af37;
+      }
+      textarea {
+        resize: vertical;
+        height: 150px;
+      }
+      .submit-btn {
+        background-color: #1a252f;
+        color: #fff;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+      }
+      .submit-btn:hover {
+        background-color: #d4af37;
+      }
+
+      .footer {
+        background-color: #0d131a;
+        color: #bdc3c7;
+        padding: 70px 0 20px;
+        border-top: 4px solid #d4af37;
+        font-size: 14px;
+      }
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+      .footer-col {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 30px;
+      }
+      .footer-col:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-col h3 {
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .footer-col h4 {
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+        height: 2px;
+        background-color: #d4af37;
+      }
+      .footer-col:nth-child(2) h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-col ul li a {
+        color: #bdc3c7;
+        transition: color 0.3s;
+      }
+      .footer-col ul li a:hover {
+        color: #d4af37;
+        padding-left: 5px;
+      }
+      .footer-col:nth-child(2) ul li a:hover {
+        padding-left: 0;
+        color: #fff;
+      }
+      .footer-bottom-sade {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #777;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 28px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1002;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      header.aktif .menu-toggle {
+        color: #1a252f;
+      }
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+        z-index: 999;
+      }
+      .nav-overlay.acik {
+        opacity: 1;
+        visibility: visible;
+      }
+      @media (max-width: 900px) {
+        header {
+          padding: 0 20px;
+          height: 80px;
+        }
+        .logo {
+          left: 20px;
+          top: 0;
+        }
+        .logo img {
+          height: 80px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        nav {
+          position: absolute;
+          top: 80px;
+          right: -100%;
+          width: 280px;
+          height: auto;
+          background-color: #ffffff;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          border-radius: 0 0 0 15px;
+          transition: right 0.4s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 30px;
+        }
+        nav.acik {
+          right: 0;
+        }
+        nav ul {
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+        }
+        nav ul li a {
+          font-size: 18px;
+          color: #1a252f !important;
+          display: block;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 10px;
+          width: 100%;
+        }
+        .contact-container {
+          flex-direction: column-reverse;
+          padding: 30px;
+        }
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+        .page-header h1 {
+          font-size: 32px;
+        }
+        .page-header {
+          height: 300px;
+        }
+        .footer-container {
+          flex-direction: column;
+        }
+        .footer-col:nth-child(2) {
+          align-items: flex-start;
+        }
+        .footer-col:nth-child(2) h4::after {
+          left: 0;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="logo">
+        <img src="img/logo2.png" alt="Beyaz Logo" class="logo-beyaz" />
+        <img src="img/logo.png" alt="Renkli Logo" class="logo-renkli" />
+      </div>
+      <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="calismalarimiz.html">Çalışmalarımız</a></li>
+          <li><a href="avukatlar.html">Avukatlarımız</a></li>
+          <li><a href="iletisim.html" style="color: #d4af37">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="nav-overlay"></div>
+
+    <section class="page-header">
+      <div class="header-content">
+        <span
+          style="
+            font-size: 14px;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 10px;
+            color: #d4af37;
+          "
+          >LA FAMILE</span
+        >
+        <h1>Bize Ulaşın</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <i class="fa-solid fa-chevron-right"></i> İletişim
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-info-section">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>Adresimiz</h3>
+          <p>
+            Adalet Mah. Hukukçular Plaza <br />
+            No: 12, Kat: 5, İstanbul
+          </p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+          <h3>Telefon</h3>
+          <p><a href="tel:+902125550000">+90 (212) 555 00 00</a></p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+          <h3>E-Posta</h3>
+          <p><a href="mailto:info@gucluhukuk.com">info@gucluhukuk.com</a></p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3>Çalışma Saatleri</h3>
+          <p>Pazartesi - Cuma: 09:00 - 18:00</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-main">
+      <div class="contact-container">
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.267851698287!2d28.98375431541584!3d41.06326497929528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab723149842c9%3A0x6291a82f3c0519a4!2zxLBzdGFuYnVsIEFkYWxldCAtIMOHYcSfbGF5YW4gQWRsaXllc2k!5e0!3m2!1str!2str!4v1645555555555!5m2!1str!2str"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="form-wrapper">
+          <h2>Hukuki Danışmanlık Alın</h2>
+          <p>Formu doldurarak bize ulaşabilirsiniz.</p>
+          <form action="#">
+            <div class="form-row">
+              <div class="form-group" style="flex: 1">
+                <input type="text" placeholder="Adınız Soyadınız" required />
+              </div>
+              <div class="form-group" style="flex: 1">
+                <input type="tel" placeholder="Telefon Numaranız" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="E-Posta Adresiniz" required />
+            </div>
+            <div class="form-group">
+              <select>
+                <option value="">Konu Seçiniz</option>
+                <option value="bosanma">Boşanma / Aile Hukuku</option>
+                <option value="ceza">Ceza Hukuku</option>
+                <option value="ticaret">Ticaret Hukuku</option>
+                <option value="diger">Diğer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Mesajınız..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Gönder</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Güçlü <span style="color: #d4af37">Hukuk</span></h3>
+          <p>
+            Hukukun üstünlüğü ilkesiyle, müvekkillerimize şeffaf ve sonuç odaklı
+            çözümler sunuyoruz.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Hızlı Erişim</h4>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="calismalarimiz.html">Çalışmalarımız</a></li>
+            <li><a href="avukatlar.html">Avukatlarımız</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul style="color: #bdc3c7">
+            <li style="margin-bottom: 10px">Adalet Mah. No: 12, İstanbul</li>
+            <li style="margin-bottom: 10px">+90 (123) 456 78 90</li>
+            <li style="margin-bottom: 10px">info@gucluhukuk.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-sade">
+        <p>&copy; 2025 Güçlü Hukuk Bürosu. Tüm Hakları Saklıdır.</p>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.querySelector("header");
+      const menuBtn = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector("nav");
+      const overlay = document.querySelector(".nav-overlay");
+      const icon = menuBtn.querySelector("i");
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("aktif", window.scrollY > 50);
+      });
+      function toggleMenu() {
+        navMenu.classList.toggle("acik");
+        overlay.classList.toggle("acik");
+        if (navMenu.classList.contains("acik")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+          document.body.style.overflow = "hidden";
+        } else {
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+          document.body.style.overflow = "";
+        }
+      }
+      menuBtn.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900 && navMenu.classList.contains("acik")) {
+          toggleMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
