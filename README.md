@@ -2,7 +2,7 @@
 
 Bu proje, modern ve responsive (mobil uyumlu) bir hukuk bürosu web sitesi tasarımıdır. HTML, CSS ve JavaScript kullanılarak geliştirilmiştir.
 
-🚀 **Canlı Siteyi Görüntüle:** [https://hukuk-site.netlify.app/](https://hukuk-site.netlify.app/)
+🚀 **Canlı Siteyi Görüntüle:** [https://hukuk-site.netlify.app/](https://hukuk-sitesi.netlify.app/)
 
 ## 🛠️ Kullanılan Teknolojiler
 * HTML5
